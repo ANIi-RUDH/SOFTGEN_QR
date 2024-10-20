@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Generator</title>
+</head>
+<body>
+
+  <h1>QR GENERATOR</h1>
+  
+  <form action="/submit" method="post">
+    <label for="cars">Choose an Item:</label>
+    <select name="ItemName" id="Item">
+      <option value="">Select</option>
+      <% items.forEach(item => { %>
+        <option value="<%= item.name %>"><%= item.name %></option>
+      <% }) %>
+    </select>
+    <br><br>
+    <input type="submit" value="Generate QR">
+  </form>
+  
+  <!-- Display QR code if qrData exists -->
+  <% if (qrData) { %>
+    <div id="QRpart">
+      <img src="<%= qrData %>" alt="QR Code" style="width: 200px; height: 200px;">
+    </div>
+  <% } %>
+
+</body>
+</html>
